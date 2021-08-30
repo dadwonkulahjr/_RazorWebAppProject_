@@ -1,0 +1,52 @@
+﻿@page "{id}"
+@model RazorWebAppProject.Pages.Admin.SuperUser.DeleteModel
+@{
+    ViewData["Title"] = "Delete Employee";
+    ViewData["showButtons"] = false;
+
+    var photoPath = "~/images/iamtuse_uploads/" + (Model.Employee.Image ?? "no-image.png");
+}
+
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-6 col-12">
+            <h2 class="text-primary">
+                Delete User&nbsp;<i class="fas fa-trash-alt"></i>
+            </h2>
+        </div>
+    </div>
+    <hr />
+    @*<partial name="_EmployeePartial" model="Model.Employee" view-data="ViewData" />*@
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="text-danger">Are you sure you want to delete this employee? @Model.Employee.Fullname</h3>
+                <p>Firstname: @Model.Employee.FirstName</p>
+                <p>Lastname: @Model.Employee.LastName</p>
+                <p>Email: @Model.Employee.Email</p>
+                <p>Gender: @Model.Employee.Gender</p>
+                <p>Department: @Model.Employee.Dept</p>
+
+                <div class="col-4 p4 mt-4 offset-4">
+                    <img src="@photoPath" class="img-thumbnail img-fluid" asp-append-version="true"
+                         style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+                </div>
+
+            </div>
+            <form method="post">
+                <input hidden="hidden" asp-for="Employee.Id" />
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-danger">
+                            Yes&nbsp;<i class="fas fa-trash-alt"></i>
+                        </button>
+                        <a asp-page="index" class="btn btn-primary">
+                            No&nbsp;<i class="far fa-hand-point-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+﻿@page "/employee/add_update/{id:int?}"
+@model RazorWebAppProject.Pages.Admin.SuperUser.UpsertModel
+@{
+    var photoPath = "~/images/iamtuse_uploads/" + (Model.SingleEmployee.Image ?? "no-image.png");
+    if (Model.SingleEmployee.Id == 0)
+    {
+        ViewData["Title"] = "Create new record";
+    }
+    else
+    {
+        ViewData["Title"] = "Update existing record";
+    }
+}
+
+
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-6 col-12">
+            @if (Model.SingleEmployee.Id == 0)
+            {
+                <h2 class="text-primary">
+                    Create new record &nbsp;<i class="fas fa-user-plus"></i>
+                </h2>
+            }
+            else
+            {
+                <h2 class="text-primary">
+                    Update record &nbsp;<i class="fas fa-user-edit"></i>
+                </h2>
+            }
+        </div>
+    </div>
+    <hr />
+    @if (Model.SingleEmployee.Id != 0)
+    {
+        <div>
+            <h3 class="text-primary">
+                Turn on email notification
+                <i class="far fa-signing"></i>
+            </h3>
+        </div>
+        <hr />
+
+        <div>
+            <form method="post" asp-page-handler="EmailAlertNotification">
+                <div class="form-check">
+                    <input asp-for="Notify" class="form-check-input" />
+                    <label class="form-check-label" asp-for="Notify">
+                        Received email notification!
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success">
+                            Confirm&nbsp;<i class="fa fa-pencil-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+    <div>
+        <form method="post" enctype="multipart/form-data" asp-page-handler="OnPost">
+            <input hidden="hidden" asp-for="SingleEmployee.Image" />
+            @if (Model.SingleEmployee.Id != 0)
+            {
+                <input hidden="hidden" asp-for="SingleEmployee.Id" />
+            }
+
+            @if (Model.SingleEmployee.Id != 0)
+            {
+                <div class="form-row mt-1">
+                    <div class="col">
+                        <label asp-for="SingleEmployee.Fullname"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="SingleEmployee.Fullname" class="form-control" placeholder="Firstname..." disabled="disabled" />
+                        <span asp-validation-for="SingleEmployee.Fullname" class="text-danger"></span>
+                    </div>
+                </div>
+            }
+            <div class="form-row mt-1">
+                <div class="col">
+                    <label asp-for="SingleEmployee.FirstName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="SingleEmployee.FirstName" class="form-control" placeholder="Firstname..." />
+                    <span asp-validation-for="SingleEmployee.FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row mt-1">
+                <div class="col">
+                    <label asp-for="SingleEmployee.LastName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="SingleEmployee.LastName" class="form-control" placeholder="Lastname..." />
+                    <span asp-validation-for="SingleEmployee.LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row mt-1">
+                <div class="col">
+                    <label asp-for="SingleEmployee.Email"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="SingleEmployee.Email" class="form-control" placeholder="Email..." />
+                    <span asp-validation-for="SingleEmployee.Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row mt-1">
+                <div class="col">
+                    <label asp-for="SingleEmployee.Gender"></label>
+                </div>
+                <div class="col-8">
+                    Male @Html.RadioButtonFor(e => e.SingleEmployee.Gender, "Male")
+                    Female  @Html.RadioButtonFor(e => e.SingleEmployee.Gender, "Female")
+                    Unknown  @Html.RadioButtonFor(e => e.SingleEmployee.Gender, "Unknown")
+                    <span asp-validation-for="SingleEmployee.Gender" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row mt-1">
+                <div class="col">
+                    <label asp-for="SingleEmployee.Dept"></label>
+                </div>
+                <div class="col-8">
+                    <select class="form-control" asp-for="SingleEmployee.Dept" asp-items="@Html.GetEnumSelectList<Dept>()">
+                        <option value="">--Choose department--</option>
+                    </select>
+                    <span asp-validation-for="SingleEmployee.Dept" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row mt-2">
+                <div class="col">
+                    <label asp-for="@Model.SingleEmployee.Image"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="@Model.Photo" class="form-control" />
+                </div>
+            </div>
+            <div class="form-row mt-3">
+                <div class="col-12 offset-sm-4">
+                    @if (Model.SingleEmployee.Id == 0)
+                    {
+                        <button type="submit" class="btn btn-primary"><i class="far fa-plus-square"></i>&nbsp;Create new record</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i>Update record</button>
+                    }
+                    <a asp-page="index" class="btn btn-success">
+                        Back to List&nbsp;<i class="fas fa-arrow-circle-left"></i>
+                    </a>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+                <div class="col-4 p4 mt-4 offset-4">
+                    <img src="@photoPath" class="img-thumbnail img-fluid" asp-append-version="true"
+                         style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <br /><br />
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

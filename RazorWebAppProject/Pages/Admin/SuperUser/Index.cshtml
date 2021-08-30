@@ -1,0 +1,123 @@
+﻿@page "/employee/show/{id:int?}"
+@model RazorWebAppProject.Pages.Admin.SuperUser.IndexModel
+@{
+    ViewData["Title"] = "Dashboard | Welcome";
+    ViewData["showButtons"] = true;
+}
+
+@*<h1 class="display-4">
+        Welcome Super Admin User! <i class="fa fa-smile"></i>
+    </h1>*@
+
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-6 col-12">
+            <h2 class="text-primary">
+                Dashboard&nbsp;<i class="fas fa-tachometer-alt"></i>
+            </h2>
+        </div>
+        <div class="col-6 text-right col-12">
+            <a asp-page="upsert" class="btn btn-primary"><i class="far fa-plus-square"></i>&nbsp;Create new record</a>
+        </div>
+    </div>
+    <form method="get" class="mt-2">
+        <div class="input-group mb-3">
+            <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    Go&nbsp;<i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <hr />
+    <br /><br />
+    <div class="row">
+        <div class="col-sm-12">
+            @if (Model.UpdateMessage != null)
+            {
+                <div class="alert alert-primary alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>@Model.UpdateMessage!</strong>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            @if (Model.DeleteConfirmation != null)
+            {
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>@Model.DeleteConfirmation!</strong>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            @if (Model.CreateMessage != null)
+            {
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>@Model.CreateMessage!</strong>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <vc:number-of-department-head-count department-name="null"></vc:number-of-department-head-count>
+            @*@await Component.InvokeAsync("NumberOfDepartmentHeadCount", null)*@
+        </div>
+    </div>
+    @if (Model.Employees.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Department</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Employees)
+                    {
+                        <partial name="_EmployeePartial" model="employee" view-data="ViewData" />
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="card-deck">
+            <div class="card mt-2">
+                <div class="card-header bg-primary">
+                    <h3 class="card-title text-white">No record has been added yet.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Click the button below to create new record.&nbsp;<i class="far fa-hand-point-down"></i></p>
+                </div>
+                <div class="card-footer bg-primary text-white">
+                    <a asp-page="upsert" class="btn btn-primary"><i class="far fa-plus-square"></i>&nbsp;Create new record</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

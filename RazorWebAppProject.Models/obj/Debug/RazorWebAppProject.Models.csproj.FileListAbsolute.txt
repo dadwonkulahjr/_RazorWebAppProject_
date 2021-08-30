@@ -1,0 +1,6 @@
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject.Models\bin\Debug\RazorWebAppProject.Models.dll
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject.Models\bin\Debug\RazorWebAppProject.Models.pdb
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject.Models\obj\Debug\RazorWebAppProject.Models.csproj.AssemblyReference.cache
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject.Models\obj\Debug\RazorWebAppProject.Models.csproj.CoreCompileInputs.cache
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject.Models\obj\Debug\RazorWebAppProject.Models.dll
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject.Models\obj\Debug\RazorWebAppProject.Models.pdb

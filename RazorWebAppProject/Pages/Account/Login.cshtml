@@ -1,0 +1,58 @@
+﻿@page
+@model RazorWebAppProject.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-6 col-12">
+            <h3 class="text-primary">
+                Log in&nbsp;<i class="fas fa-sign-in-alt"></i>
+            </h3>
+        </div>
+    </div>
+    <hr />
+    <div class="container mt-5">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <h3 class="text-primary text-center">
+                    Login   <i class="fas fa-user-circle"></i>
+                   
+                </h3>
+                <hr />
+
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="LoginViewModel.Email" class="col-form-label">Email Address</label>
+                        <input asp-for="LoginViewModel.Email" class="form-control" placeholder="Email Address..." />
+                        <span class="text-danger" asp-validation-for="LoginViewModel.Email"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="LoginViewModel.Password" class="col-form-label"></label>
+                        <input asp-for="LoginViewModel.Password" class="form-control" placeholder="Password..." />
+                        <span class="text-danger" asp-validation-for="LoginViewModel.Password"></span>
+                    </div>
+                    <div class="form-check">
+                        <input asp-for="LoginViewModel.RememberMe" class="form-check-input" />
+                        <label asp-for="LoginViewModel.RememberMe" class="form-check-label"></label>
+
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success mt-2">Login</button>
+                        <a class="btn btn-primary mt-2" asp-page="/Index">
+                            Cancel&nbsp;<i class="fas fa-long-arrow-alt-left"></i>
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

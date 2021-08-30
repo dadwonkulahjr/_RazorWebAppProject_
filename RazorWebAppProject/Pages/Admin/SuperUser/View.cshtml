@@ -1,0 +1,70 @@
+﻿@page "{id?}/{handler?}"
+@model RazorWebAppProject.Pages.Admin.SuperUser.ViewModel
+@{
+    ViewData["Title"] = "Employee Details";
+    var photoPath = "~/images/iamtuse_uploads/" + (Model.Employee.Image ?? "no-image.png");
+}
+
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-6 col-12">
+            <h2 class="text-primary">
+                Details&nbsp;<i class="fas fa-info-circle"></i>
+            </h2>
+        </div>
+    </div>
+    <hr />
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> @Model.Message!&nbsp;<i class="far fa-smile-o"></i>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-12">
+            <vc:number-of-department-head-count department-name="@Model.Employee.Dept"></vc:number-of-department-head-count>
+            @*@await Component.InvokeAsync("NumberOfDepartmentHeadCount", new { department = Model.Employee.Dept })*@
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 col-md-12">
+            <div class="card-deck" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <div class="card mt-2 mb-2">
+                    <div class="card-header"><h3 class="card-title">@Model.Employee.Fullname</h3></div>
+                    <img src="@photoPath" asp-append-version="true" class="card-img-top img-thumbnail" />
+                    <div class="card-body text-center">
+                        <p>
+                            Firstname : @Model.Employee.FirstName
+                        </p>
+                        <p>
+                            Lastname : @Model.Employee.LastName
+                        </p>
+                        <p>
+                            Gender : @Model.Employee.Gender
+                        </p>
+                        <p>
+                            Email : @Model.Employee.Email
+                        </p>
+                        <p>
+                            Department : @Model.Employee.Dept
+                        </p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-page="upsert" asp-route-id="@Model.Employee.Id" class="btn btn-success">
+                            Edit&nbsp;<i class="fas fa-user-edit"></i>
+                        </a>
+                        <a asp-page="index" class="btn btn-primary">
+                            Back to List&nbsp;<i class="fas fa-arrow-circle-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
