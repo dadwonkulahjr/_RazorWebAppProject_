@@ -186,7 +186,7 @@ namespace RazorWebAppProject.Pages.Admin.SuperUser
         {
             if (Photo != null)
             {
-                string generateGuid = Guid.NewGuid().ToString() + "__" + SingleEmployee.Fullname + "__" + Photo.FileName;
+                string generateGuid = Guid.NewGuid().ToString() + "__" + SingleEmployee.FirstName + "_" + SingleEmployee.LastName + "__" + Photo.FileName;
                 return generateGuid;
             }
             return null;

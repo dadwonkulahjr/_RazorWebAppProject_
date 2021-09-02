@@ -26,8 +26,29 @@ using RazorWebAppProject.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\Pages\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\Pages\_ViewImports.cshtml"
+using RazorWebAppProject.ExtentionsMethod;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\Pages\_ViewImports.cshtml"
+using RazorWebAppProject.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a0906750319c55d6ce48b545e707c28c2eb4094c", @"/Pages/Privacy.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"41747b330b7bd8986005bd82da45f4e38f06c591", @"/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b1858a52ab4ebeaa76b2f9f56f4fb15b2dc4ad24", @"/Pages/_ViewImports.cshtml")]
     public class Pages_Privacy : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
         #pragma warning disable 1998

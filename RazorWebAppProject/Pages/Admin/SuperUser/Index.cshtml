@@ -1,4 +1,4 @@
-﻿@page "/employee/show/{id:int?}"
+﻿@page "{id:int?}"
 @model RazorWebAppProject.Pages.Admin.SuperUser.IndexModel
 @{
     ViewData["Title"] = "Dashboard | Welcome";
@@ -13,11 +13,11 @@
     <div class="row">
         <div class="col-6 col-12">
             <h2 class="text-primary">
-                Dashboard&nbsp;<i class="fas fa-tachometer-alt"></i>
+                Dashboard&nbsp;<i class="fa fa-tachometer-alt"></i>
             </h2>
         </div>
         <div class="col-6 text-right col-12">
-            <a asp-page="upsert" class="btn btn-primary"><i class="far fa-plus-square"></i>&nbsp;Create new record</a>
+            <a asp-page="/Admin/SuperUser/Upsert" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp;Create new record</a>
         </div>
     </div>
     <form method="get" class="mt-2">
@@ -25,7 +25,7 @@
             <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
-                    Go&nbsp;<i class="fas fa-search"></i>
+                    Go&nbsp;<i class="fa fa-search"></i>
                 </button>
             </div>
         </div>
@@ -106,10 +106,10 @@
                     <h3 class="card-title text-white">No record has been added yet.</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Click the button below to create new record.&nbsp;<i class="far fa-hand-point-down"></i></p>
+                    <p class="card-text">Click the button below to create new record.&nbsp;<i class="fa fa-hand-point-down"></i></p>
                 </div>
                 <div class="card-footer bg-primary text-white">
-                    <a asp-page="upsert" class="btn btn-primary"><i class="far fa-plus-square"></i>&nbsp;Create new record</a>
+                    <a asp-page="upsert" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp;Create new record</a>
                 </div>
             </div>
         </div>

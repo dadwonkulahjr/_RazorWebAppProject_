@@ -1,0 +1,128 @@
+﻿@page
+@model RazorWebAppProject.Pages.Account.ManageUserModel
+@{
+    ViewData["Title"] = "Manage All Users";
+
+}
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h2 class="text-primary">
+                All Users&nbsp;<i class="fa fa-users"></i>
+            </h2>
+        </div>
+    </div>
+    <hr />
+    @if (Model.Users.Any())
+    {
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Photo</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Users.Count; i++)
+                    {
+                        var photoPath = "~/images/iamtuse_application_users_upload/" + (Model.Users[i].PhotoPath ?? "no-image.png");
+
+                    <tr>
+                        <td>
+                            @Model.Users[i].FirstName
+                        </td>
+                        <td>
+                            @Model.Users[i].LastName
+                        </td>
+                        <td>
+                            @Model.Users[i].Email
+                        </td>
+                        <td>
+                            @Model.Users[i].UserName
+                        </td>
+                        <td>
+                            @Model.Users[i].Gender
+                        </td>
+                        <td>
+                            @Model.Users[i].Address
+                        </td>
+                        <td>
+                            <img asp-append-version="true" src="@photoPath" class="rounded-circle" style="width:40px;" />
+                        </td>
+                        <td>
+                            <a class="btn btn-success text-white" asp-page="edit"
+                               style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
+                                <i class="fa fa-pencil-alt"></i>&nbsp;Edit
+                            </a>
+                            <a class="btn btn-primary text-white" asp-page="view"
+                               style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
+                                <i class="fa fa-eye"></i>&nbsp;View
+                            </a>
+                            <a class="btn btn-danger text-white" asp-page="delete"
+                               style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
+                                <i class="fa fa-trash-alt"></i>&nbsp;Delete
+                            </a>
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="container">
+            <div class="row justify-content-center align-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-6">
+
+                </div>
+            </div>
+
+
+        </div>
+
+    }
+    else
+    {
+        <div class="container">
+            <div class="row justify-content-center align-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-6">
+                    <div class="card-deck">
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h3 class="text-primary">
+                                    No record yet to be display!
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title text-primary">
+                                    Click on the button below to
+                                    create new record&nbsp;<i class="far fa-hand-point-down"></i>
+
+                                </p>
+
+                            </div>
+                            <div class="card-footer text-center">
+                                <a asp-page="register" class="btn btn-primary btn-block">
+                                    <i class="fas fa-plus-circle"></i>&nbsp;Create new record
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

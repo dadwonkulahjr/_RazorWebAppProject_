@@ -19,13 +19,13 @@
             @if (Model.SingleEmployee.Id == 0)
             {
                 <h2 class="text-primary">
-                    Create new record &nbsp;<i class="fas fa-user-plus"></i>
+                    Create new record &nbsp;<i class="fa fa-user-plus"></i>
                 </h2>
             }
             else
             {
                 <h2 class="text-primary">
-                    Update record &nbsp;<i class="fas fa-user-edit"></i>
+                    Update record &nbsp;<i class="fa fa-user-edit"></i>
                 </h2>
             }
         </div>
@@ -36,7 +36,7 @@
         <div>
             <h3 class="text-primary">
                 Turn on email notification
-                <i class="far fa-signing"></i>
+                <i class="fa fa-signing"></i>
             </h3>
         </div>
         <hr />
@@ -141,11 +141,11 @@
                 <div class="col-12 offset-sm-4">
                     @if (Model.SingleEmployee.Id == 0)
                     {
-                        <button type="submit" class="btn btn-primary"><i class="far fa-plus-square"></i>&nbsp;Create new record</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp;Create new record</button>
                     }
                     else
                     {
-                        <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i>Update record</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil-alt"></i>&nbsp;Update record</button>
                     }
                     <a asp-page="index" class="btn btn-success">
                         Back to List&nbsp;<i class="fas fa-arrow-circle-left"></i>

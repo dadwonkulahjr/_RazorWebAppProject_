@@ -26,8 +26,29 @@ using RazorWebAppProject.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\Pages\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\Pages\_ViewImports.cshtml"
+using RazorWebAppProject.ExtentionsMethod;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\Pages\_ViewImports.cshtml"
+using RazorWebAppProject.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c4e5649ee8282d28e6310bdf3570c1f569503e4a", @"/Pages/Shared/Components/NumberOfDepartmentHeadCount/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"41747b330b7bd8986005bd82da45f4e38f06c591", @"/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b1858a52ab4ebeaa76b2f9f56f4fb15b2dc4ad24", @"/Pages/_ViewImports.cshtml")]
     public class Pages_Shared_Components_NumberOfDepartmentHeadCount_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<DepartmentHeadCount>>
     {
         #pragma warning disable 1998

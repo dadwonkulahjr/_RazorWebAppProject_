@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorWebAppProject.Repository.Migrations
+namespace RazorWebAppProject.Migrations
 {
-    public partial class AddingIdentity : Migration
+    public partial class BrandNewMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,11 +39,34 @@ namespace RazorWebAppProject.Repository.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: false),
+                    Gender = table.Column<int>(nullable: false),
+                    PhotoPath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tblEmployee",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Sex = table.Column<int>(type: "int", nullable: false),
+                    Department = table.Column<int>(type: "int", nullable: false),
+                    Photo = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tblEmployee", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,6 +175,21 @@ namespace RazorWebAppProject.Repository.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "tblEmployee",
+                columns: new[] { "Id", "Department", "Email", "FirstName", "Sex", "Photo", "LastName" },
+                values: new object[] { 1, 1, "tuse@iamtuse.com", "tuse", 1, null, "theProgrammer" });
+
+            migrationBuilder.InsertData(
+                table: "tblEmployee",
+                columns: new[] { "Id", "Department", "Email", "FirstName", "Sex", "Photo", "LastName" },
+                values: new object[] { 2, 5, "wonkulahp@iamtuse.com", "Precious", 2, "focus.jpg", "Wonkulah" });
+
+            migrationBuilder.InsertData(
+                table: "tblEmployee",
+                columns: new[] { "Id", "Department", "Email", "FirstName", "Sex", "Photo", "LastName" },
+                values: new object[] { 3, 2, "test@iamtuse.com", "Test", 3, null, "User" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -208,6 +246,9 @@ namespace RazorWebAppProject.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "tblEmployee");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

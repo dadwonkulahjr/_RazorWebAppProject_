@@ -1,0 +1,91 @@
+﻿@page "{id?}"
+@model RazorWebAppProject.Pages.Account.EditModel
+@{
+    ViewData["Title"] = "Edit User";
+    var photoPath = "~/images/iamtuse_application_users_upload/" + (Model.ApplicationUser.PhotoPath ?? "no-image.png");
+
+}
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-6 col-12">
+            <h3 class="text-primary">
+                <i class="fas fa-user-edit"></i>&nbsp;Edit User
+            </h3>
+        </div>
+    </div>
+    <hr />
+    <div class="container mt-2" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius:18px;">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <form method="post" class="mb-2">
+                    <input asp-for="ApplicationUser.PhotoPath" hidden="hidden" />
+                    <input asp-for="ApplicationUser.Id" hidden="hidden" />
+                    <div class="row mt-3">
+                        <div class="col-sm-12 col-md-12 col-lg-6 offset-10">
+                            <img src="@photoPath" class="rounded-circle img-fluid" asp-append-version="true"
+                                 style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);width:100px;" />
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ApplicationUser.Id" class="col-form-label"></label>
+                        <input asp-for="ApplicationUser.Id" placeholder="Username..." class="form-control" disabled="disabled" />
+                        @*<span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>*@
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ApplicationUser.UserName" class="col-form-label">Username</label>
+                        <input asp-for="ApplicationUser.UserName" placeholder="Username..." class="form-control"/>
+                        <span asp-validation-for="ApplicationUser.UserName" class="text-danger"></span>
+                        <span class="text-primary" asp-validation-for="ApplicationUser.UserName">This name will be used as your login credentials!</span>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ApplicationUser.FirstName" class="col-form-label"></label>
+                        <input asp-for="ApplicationUser.FirstName" placeholder="First name..." class="form-control" />
+                        <span asp-validation-for="ApplicationUser.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ApplicationUser.LastName" class="col-form-label"></label>
+                        <input asp-for="ApplicationUser.LastName" placeholder="Last name..." class="form-control" />
+                        <span asp-validation-for="ApplicationUser.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ApplicationUser.Email" class="col-form-label"></label>
+                        <input asp-for="ApplicationUser.Email" placeholder="Email Address..." class="form-control" />
+                        <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        @*<label asp-for="ApplicationUser.Gender" class="col-form-label"></label><br /><br />*@
+                        Male @Html.RadioButtonFor(e => e.ApplicationUser.Gender, "Male")
+                        Female  @Html.RadioButtonFor(e => e.ApplicationUser.Gender, "Female")
+                        Unknown  @Html.RadioButtonFor(e => e.ApplicationUser.Gender, "Unknown")
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ApplicationUser.Address" class="col-form-label"></label>
+                        <input asp-for="ApplicationUser.Address" placeholder="Address..." class="form-control" />
+                        <span asp-validation-for="ApplicationUser.Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ApplicationUser.PhotoPath" class="col-form-label"></label>
+                        <input asp-for="Photo" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 col-md-12">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-pencil-alt"></i>&nbsp;Update
+                            </button>
+
+                            <a class="btn btn-success text-white" asp-page="manageuser">
+                                <i class="fas fa-arrow-alt-circle-left"></i>&nbsp;Back to List
+                            </a>
+                        </div>
+
+                    </div>
+                </form>
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

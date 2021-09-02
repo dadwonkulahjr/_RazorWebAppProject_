@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{area?}"
 @model RazorWebAppProject.Pages.Account.LoginModel
 @{
     ViewData["Title"] = "Login";
@@ -17,7 +17,7 @@
         <div class="row justify-content-center align-content-center">
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <h3 class="text-primary text-center">
-                    Login   <i class="fas fa-user-circle"></i>
+                    Login&nbsp;<i class="fas fa-user-circle"></i>
                    
                 </h3>
                 <hr />
@@ -40,8 +40,10 @@
 
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-success mt-2">Login</button>
-                        <a class="btn btn-primary mt-2" asp-page="/Index">
+                        <button class="btn btn-primary mt-2">
+                            Login&nbsp;<i class="fas fa-sign-in-alt"></i>
+                        </button>
+                        <a class="btn btn-success mt-2" asp-page="/Index">
                             Cancel&nbsp;<i class="fas fa-long-arrow-alt-left"></i>
                         </a>
                     </div>

@@ -1,0 +1,9 @@
+﻿@model RegisterViewModel
+
+@{
+    var photoPath = "~/images/iamtuse_application_users_upload/" + (Model.PhotoPath ?? "no-image.png");
+}
+
+<a class="logo" asp-page="index">
+    <img src="@photoPath" asp-append-version="true" style="width:50px;" class="rounded-circle" />
+</a>

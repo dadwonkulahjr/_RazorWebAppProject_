@@ -1,103 +1,108 @@
-﻿@page "{area}"
+﻿@page
 @model RazorWebAppProject.Pages.Account.RegisterModel
 @{
     ViewData["Title"] = "Register new user";
+    var photoPath = "~/images/iamtuse_application_users_upload/" + (Model.RegisterViewModel.PhotoPath ?? "no-image.png");
 }
 <div class="border backgroundWhite container mt-4">
     <div class="row">
         <div class="col-6 col-12">
-            <h3 class="text-primary">Register
+            <h3 class="text-primary">
+                Register
                 <i class="fas fa-sign-in-alt"></i>
             </h3>
         </div>
     </div>
     <hr />
     @*One Love Form*@
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col col-md-6 col-lg-6">
-                <div class="card-deck mb-5">
-                    <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                        <div class="card-header text-center">
-                            <div class="card-body" style="font-family:Verdana">
-                                <form method="post" asp-controller="account" asp-action="register">
-                                    <div class="card-body">
-                                        <h3 class="text-center text-primary">
-                                            Register New User!<br />
-                                            <i class="far fa-smile"></i>
-                                        </h3>
-                                        <hr />
-                                        <div class="form-row py-2">
-                                            <div class="col">
-                                                <div>
-                                                    <input asp-for="RegisterViewModel.Email" placeholder="Email..." class="form-control" autofocus />
-                                                    <span class="text-danger" asp-validation-for="RegisterViewModel.Email"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div>
-                                                    <input asp-for="RegisterViewModel.Password" placeholder="Password..." class="form-control" />
-                                                    <span class="text-danger" asp-validation-for="RegisterViewModel.Password"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="py-2">
-                                            <input asp-for="RegisterViewModel.ConfirmPassword" placeholder="Confirm Password..." class="form-control" />
-                                            <span class="text-danger" asp-validation-for="RegisterViewModel.ConfirmPassword"></span>
-                                        </div>
-                                        @*<div class="form-row py-2">
-                                            <div class="col">
-                                                <div>
-                                                    <input asp-for="FirstName" placeholder="Firstname..." class="form-control" autofocus />
-                                                    <span class="text-danger" asp-validation-for="FirstName"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div>
-                                                    <input asp-for="LastName" placeholder="Lastname..." class="form-control" />
-                                                    <span class="text-danger" asp-validation-for="LastName"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row py-2">
-                                            <div class="col">
-                                                <div>
-                                                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="custom-select">
-                                                        <option value="">--Choose gender--</option>
-                                                    </select>
-                                                    <span class="text-danger" asp-validation-for="Gender"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div>
-                                                    <input asp-for="Address" placeholder="Address..." class="form-control" />
-                                                    <span class="text-danger" asp-validation-for="Address"></span>
-                                                </div>
-                                            </div>
-                                        </div>*@
-                                        <div class="py-2">
-                                            <button type="submit" class="btn btn-primary form-control">
-                                                <i class="fas fa-user-plus"></i>&nbsp;Register
-                                            </button>
-                                        </div>
-                                        <div class="py-1">
-                                            <a asp-page="index" class="btn btn-success form-control">
-                                                <i class="fas fa-long-arrow-alt-left"></i>&nbsp;Back to List
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="text-danger" asp-validation-summary="All"></div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+    <div class="container shadow">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <h3 class="text-primary mt-3">
+                    Add New User <i class="fas fa-user-plus"></i>
+                </h3>
+                <hr />
+                <form method="post" class="mb-4" asp-page="register" enctype="multipart/form-data">
+                    @if (Model.RegisterViewModel.PhotoPath != null)
+                    {
+                        <input asp-for="RegisterViewModel.PhotoPath" hidden="hidden" />
+                    }
+                    else
+                    {
+                        <input asp-for="RegisterViewModel.PhotoPath" hidden="hidden" />
+                    }
+                    <div class="col-4 p4 mt-4 offset-4">
+                        <img src="@photoPath" class="img-thumbnail img-fluid" asp-append-version="true"
+                             style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="RegisterViewModel.FirstName" class="col-form-label"></label>
+                        <input asp-for="RegisterViewModel.FirstName" placeholder="First name..." class="form-control" />
+                        <span class="text-danger" asp-validation-for="RegisterViewModel.FirstName"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="RegisterViewModel.LastName" class="col-form-label"></label>
+                        <input asp-for="RegisterViewModel.LastName" placeholder="Last name..." class="form-control" />
+                        <span class="text-danger" asp-validation-for="RegisterViewModel.LastName"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="RegisterViewModel.Password" class="col-form-label"></label>
+                        <input asp-for="RegisterViewModel.Password" placeholder="Password..." class="form-control" />
+                        <span class="text-danger" asp-validation-for="RegisterViewModel.Password"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="RegisterViewModel.ConfirmPassword" class="col-form-label"></label>
+                        <input asp-for="RegisterViewModel.ConfirmPassword" placeholder="Confirm Password..." class="form-control" />
+                        <span class="text-danger" asp-validation-for="RegisterViewModel.ConfirmPassword"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        @*<label asp-for="RegisterViewModel.Gender"></label>*@
+                        Male @Html.RadioButtonFor(e => e.RegisterViewModel.Gender, "Male")
+                        Female  @Html.RadioButtonFor(e => e.RegisterViewModel.Gender, " Female")
+                        Unknown  @Html.RadioButtonFor(e => e.RegisterViewModel.Gender, " Unknown")
+                        <span asp-validation-for="RegisterViewModel.Gender" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="RegisterViewModel.Email" class="col-form-label">Email Address</label>
+                        <input asp-for="RegisterViewModel.Email" placeholder="Email..." class="form-control" />
+                        <span class="text-danger" asp-validation-for="RegisterViewModel.Email"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="RegisterViewModel.Address" class="col-form-label"></label>
+                        <input asp-for="RegisterViewModel.Address" placeholder="Address..." class="form-control" />
+                        <span class="text-danger" asp-validation-for="RegisterViewModel.Address"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="RegisterViewModel.PhotoPath" class="col-form-label"></label>
+                        <input asp-for="Photo" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus-circle"></i>&nbsp;Add
+                            </button>
+                            <a class="btn btn-success" asp-page="/Admin/SuperUser/Index">
+                                Cancel&nbsp;<i class="fas fa-arrow-circle-left"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
+
+
+
+
+                </form>
             </div>
+
         </div>
+
+
     </div>
 </div>
 

@@ -445,3 +445,7 @@ C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\b
 C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\bin\Debug\net5.0\refs\Microsoft.Extensions.Primitives.dll
 C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\bin\Debug\net5.0\refs\System.IO.Pipelines.dll
 C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Shared\_ApplicationUserPartial.cshtml.g.cs
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Account\ManageUser.cshtml.g.cs
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Account\Edit.cshtml.g.cs

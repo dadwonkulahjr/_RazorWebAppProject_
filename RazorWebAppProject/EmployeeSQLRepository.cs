@@ -18,7 +18,7 @@ namespace RazorWebAppProject
 
         public Employee Add(Employee newEmployee)
         {
-            _appDbContext.Database.ExecuteSqlRaw("sp_add_new_employee {0}, {1}, {2}, {3}, {4}, {5}", newEmployee.FirstName, newEmployee.LastName, newEmployee.Email, newEmployee.Gender, newEmployee.Dept, newEmployee.Image);
+            _appDbContext.Database.ExecuteSqlRaw("sp_create_new_record {0}, {1}, {2}, {3}, {4}, {5}", newEmployee.FirstName, newEmployee.LastName, newEmployee.Email, newEmployee.Gender, newEmployee.Dept, newEmployee.Image);
 
             return newEmployee;
         }
@@ -28,7 +28,7 @@ namespace RazorWebAppProject
             var findEmployee = _appDbContext.Employee.Find(id);
             if (findEmployee != null)
             {
-                _appDbContext.Database.ExecuteSqlRaw("sp_delete_employee {0}", findEmployee.Id);
+                _appDbContext.Database.ExecuteSqlRaw("sp_delete_record {0}", findEmployee.Id);
                 return findEmployee;
             }
             return null;
@@ -103,7 +103,7 @@ namespace RazorWebAppProject
             var findEmployee = _appDbContext.Employee.Find(updateEmployee.Id);
             if (findEmployee != null)
             {
-                _appDbContext.Database.ExecuteSqlRaw("sp_update_employee {0}, {1}, {2}, {3}, {4}, {5}", updateEmployee.FirstName, updateEmployee.LastName, updateEmployee.Email, updateEmployee.Gender, updateEmployee.Dept, updateEmployee.Image);
+                _appDbContext.Database.ExecuteSqlRaw("sp_update_record {0}, {1}, {2}, {3}, {4}, {5}, {6}", updateEmployee.FirstName, updateEmployee.LastName, updateEmployee.Email, updateEmployee.Gender, updateEmployee.Dept, updateEmployee.Image, updateEmployee.Id);
                 return updateEmployee;
             }
 

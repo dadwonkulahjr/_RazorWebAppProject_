@@ -1,0 +1,20 @@
+﻿@page "{handler?}"
+@model RazorWebAppProject.Pages.Account.LogoutModel
+@{
+    ViewData["Title"] = "Logout";
+}
+<div class="border backgroundWhite container mt-4">
+    <form method="post">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <p>Are you sure you want to logout?</p>
+                <p>
+                    <button class="btn btn-outline-primary" asp-page-handler="YesLogOut">Yes</button>
+                    <button class="btn btn-outline-secondary" asp-page-handler="NoDontLogOut">No</button>
+                </p>
+            </div>
+        </div>
+    </form>
+    <hr />
+</div>
+

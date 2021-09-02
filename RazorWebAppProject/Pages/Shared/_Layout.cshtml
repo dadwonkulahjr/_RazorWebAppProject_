@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    string photoPath = null;
+    if (SignInManager.IsSignedIn(User))
+    {
+        var result = await UserManager.GetUserAsync(User);
+        photoPath = "~/images/iamtuse_application_users_upload/" + (result.PhotoPath ?? "no-image.png");
+    }
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -52,9 +62,20 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" asp-page="index">
-                            <img src="~/images/test2.png" style="width:50px;" class="rounded-circle" />
-                        </a>
+                        @{
+                            if (SignInManager.IsSignedIn(User))
+                            {
+                                <a class="logo" asp-page="index">
+                                    <img src="@photoPath" style="width:50px;" class="rounded-circle" asp-append-version="true" />
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="logo" asp-page="index">
+                                    <img src="~/images/test2.png" style="width:50px;" class="rounded-circle" asp-append-version="true" />
+                                </a>
+                            }
+                        }
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
@@ -67,10 +88,16 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            @*<a class="js-arrow" asp-page="Index">
+                            <a class="js-arrow" asp-page="/admin/superuser/index">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
-                            </a>*@
+                            </a>
                         </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" asp-page="/admin/superuser/index">
+                                <i class="fa fa-users-cog"></i>&nbsp;Admin
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
@@ -79,20 +106,84 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a asp-page="index">
-                    <img src="~/images/test2.png" style="width:40px;" class="rounded-circle" />
-                </a>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a asp-page="index">
+                        <img src="@photoPath" asp-append-version="true" style="width:60px;" class="rounded-circle" /> <b>RazorWebAppProject</b>
+                    </a>
+                }
+                else
+                {
+                    <a asp-page="index">
+                        <img src="~/images/test2.png" style="width:60px;" class="rounded-circle" /> <b>RazorWebAppProject</b>
+                    </a>
+                }
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" asp-page="Index">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard
-                            </a>
-                        </li>
-                    </ul>
+                    @{
+                        if (SignInManager.IsSignedIn(User))
+                        {
+                            <ul class="list-unstyled navbar__list">
+                                <li class="active has-sub">
+                                    <a class="js-arrow" asp-page="Index">
+                                        <i class="fas fa-tachometer-alt"></i>Dashboard
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="list-unstyled navbar__list">
+                                <li class="active has-sub">
+                                    <a class="js-arrow" href="#">
+                                        <i class="fa fa-users-cog"></i>&nbsp;Admin
+                                    </a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li class="has-sub">
+                                            <a class="js-arrow" asp-page="/account/register">
+                                                <i class="fa fa-user-plus"></i>Add User
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-page="/account/manageuser"><i class="fas fa-users-cog"></i>Manage Users</a>
+                                        </li>
+                                        <li>
+                                            <a href="index3.html">Dashboard 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="index4.html">Dashboard 4</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+
                 </nav>
+
+                @*<nav class="navbar-sidebar">
+                        @{
+                            if (SignInManager.IsSignedIn(User))
+                            {
+                                <ul class="list-unstyled navbar__list">
+                                    <li class="active has-sub">
+                                        <a class="js-arrow" asp-page="Index">
+                                            <i class="fas fa-tachometer-alt"></i>Dashboard
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            }
+                            else
+                            {
+
+                            }
+                        }
+
+                    </nav>*@
             </div>
         </aside>
         <!-- END MENU SIDEBAR-->

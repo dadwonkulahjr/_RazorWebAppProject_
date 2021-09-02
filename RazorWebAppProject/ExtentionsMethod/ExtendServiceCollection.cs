@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,10 @@ namespace RazorWebAppProject.ExtentionsMethod
             services.AddRazorPages(options =>
             {
                 options.Conventions.AuthorizePage("/Admin/SuperUser/Upsert");
+                options.Conventions.AuthorizePage("/Account/Register");
+                options.Conventions.AuthorizePage("/Admin/SuperUser/Delete");
+                options.Conventions.AllowAnonymousToPage("/Account/Login");
+                
             }).AddControllersAsServices();
             services.AddMvcCore()
                     .AddApiExplorer();
@@ -34,13 +39,14 @@ namespace RazorWebAppProject.ExtentionsMethod
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-            }).AddIdentity<IdentityUser, IdentityRole>()
+            }).AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.ConfigureApplicationCookie(options =>
             {
-                //options.LoginPath = "/Account/Login";
-                //options.LogoutPath = "/Account/Logout";
+               
+                options.LoginPath = new PathString( "/Account/Login");
+                options.LogoutPath =new PathString("/Account/Logout");
             });
 
             services.AddScoped<IDefaultRepository, EmployeeSQLRepository>();
