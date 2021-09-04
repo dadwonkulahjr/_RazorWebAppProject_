@@ -87,7 +87,7 @@ namespace RazorWebAppProject.Pages.Account
             {
                 //Photo has beeen selected...
                 //for processing
-                guid = Guid.NewGuid().ToString() + "__" + RegisterViewModel.FirstName + " " + RegisterViewModel.LastName + "__" + Photo.FileName;
+                guid = Guid.NewGuid().ToString() + "__" + RegisterViewModel.FirstName + "_" + RegisterViewModel.LastName + "__" + Photo.FileName;
 
                 string webRootPath = Path.Combine(_webHostEnvironment.WebRootPath, "images",
                     "iamtuse_application_users_upload", guid);

@@ -62,20 +62,10 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        @{
-                            if (SignInManager.IsSignedIn(User))
-                            {
-                                <a class="logo" asp-page="index">
-                                    <img src="@photoPath" style="width:50px;" class="rounded-circle" asp-append-version="true" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a class="logo" asp-page="index">
-                                    <img src="~/images/test2.png" style="width:50px;" class="rounded-circle" asp-append-version="true" />
-                                </a>
-                            }
-                        }
+                        <a class="logo" asp-page="/admin/superuser/index">
+                            <img src="~/images/test2.png" style="width:50px;" class="rounded-circle" asp-append-version="true" alt="Image Loading...." />
+                        </a>
+
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
@@ -106,18 +96,10 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <a asp-page="index">
-                        <img src="@photoPath" asp-append-version="true" style="width:60px;" class="rounded-circle" /> <b>RazorWebAppProject</b>
-                    </a>
-                }
-                else
-                {
-                    <a asp-page="index">
-                        <img src="~/images/test2.png" style="width:60px;" class="rounded-circle" /> <b>RazorWebAppProject</b>
-                    </a>
-                }
+                <a asp-page="index">
+                    <img src="~/images/test2.png" style="width:60px;" class="rounded-circle" alt="Image Loading...." /> <b>RazorWebAppProject</b>
+                </a>
+
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">

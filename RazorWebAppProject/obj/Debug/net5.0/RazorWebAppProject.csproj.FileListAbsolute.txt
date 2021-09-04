@@ -449,3 +449,4 @@ C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\o
 C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Shared\_ApplicationUserPartial.cshtml.g.cs
 C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Account\ManageUser.cshtml.g.cs
 C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Account\Edit.cshtml.g.cs
+C:\Users\Dad S. Wonkulah Jr\source\repos\RazorWebAppProject\RazorWebAppProject\obj\Debug\net5.0\Razor\Pages\Account\View.cshtml.g.cs

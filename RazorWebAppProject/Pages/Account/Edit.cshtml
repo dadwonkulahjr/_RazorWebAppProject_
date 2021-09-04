@@ -8,21 +8,21 @@
 <div class="border backgroundWhite container mt-4">
     <div class="row">
         <div class="col-6 col-12">
-            <h3 class="text-primary">
+            <h2 class="text-primary">
                 <i class="fas fa-user-edit"></i>&nbsp;Edit User
-            </h3>
+            </h2>
         </div>
     </div>
     <hr />
     <div class="container mt-2" style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius:18px;">
         <div class="row justify-content-center align-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-6">
-                <form method="post" class="mb-2">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <form method="post" class="mb-2" enctype="multipart/form-data">
                     <input asp-for="ApplicationUser.PhotoPath" hidden="hidden" />
                     <input asp-for="ApplicationUser.Id" hidden="hidden" />
                     <div class="row mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-6 offset-10">
-                            <img src="@photoPath" class="rounded-circle img-fluid" asp-append-version="true"
+                            <img src="@photoPath" alt="Image Loading...." class="rounded-circle img-fluid" asp-append-version="true"
                                  style="box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);width:100px;" />
                         </div>
 

@@ -12,6 +12,8 @@ namespace RazorWebAppProject.Pages.Account
     public class ManageUserModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        [TempData]
+        public string UpdateSuccess { get; set; }
         public List<ApplicationUser> Users { get; set; }
         public ManageUserModel(UserManager<ApplicationUser> userManager)
         {

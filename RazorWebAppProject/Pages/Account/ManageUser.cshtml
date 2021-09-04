@@ -13,6 +13,20 @@
         </div>
     </div>
     <hr />
+    @if (!string.IsNullOrEmpty(Model.UpdateSuccess))
+    { 
+        <div class="container">
+            <div class="row justify-content-center align-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Success!</strong> @Model.UpdateSuccess
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     @if (Model.Users.Any())
     {
 
@@ -35,48 +49,48 @@
                     {
                         var photoPath = "~/images/iamtuse_application_users_upload/" + (Model.Users[i].PhotoPath ?? "no-image.png");
 
-                    <tr>
-                        <td>
-                            @Model.Users[i].FirstName
-                        </td>
-                        <td>
-                            @Model.Users[i].LastName
-                        </td>
-                        <td>
-                            @Model.Users[i].Email
-                        </td>
-                        <td>
-                            @Model.Users[i].UserName
-                        </td>
-                        <td>
-                            @Model.Users[i].Gender
-                        </td>
-                        <td>
-                            @Model.Users[i].Address
-                        </td>
-                        <td>
-                            <img asp-append-version="true" src="@photoPath" class="rounded-circle" style="width:40px;" />
-                        </td>
-                        <td>
-                            <a class="btn btn-success text-white" asp-page="edit"
-                               style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
-                                <i class="fa fa-pencil-alt"></i>&nbsp;Edit
-                            </a>
-                            <a class="btn btn-primary text-white" asp-page="view"
-                               style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
-                                <i class="fa fa-eye"></i>&nbsp;View
-                            </a>
-                            <a class="btn btn-danger text-white" asp-page="delete"
-                               style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
-                                <i class="fa fa-trash-alt"></i>&nbsp;Delete
-                            </a>
+                        <tr>
+                            <td>
+                                @Model.Users[i].FirstName
+                            </td>
+                            <td>
+                                @Model.Users[i].LastName
+                            </td>
+                            <td>
+                                @Model.Users[i].Email
+                            </td>
+                            <td>
+                                @Model.Users[i].UserName
+                            </td>
+                            <td>
+                                @Model.Users[i].Gender
+                            </td>
+                            <td>
+                                @Model.Users[i].Address
+                            </td>
+                            <td>
+                                <img asp-append-version="true" alt="Image Loading...." src="@photoPath" class="rounded-circle" style="width:40px;" />
+                            </td>
+                            <td>
+                                <a class="btn btn-success text-white" asp-page="edit"
+                                   style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
+                                    <i class="fa fa-pencil-alt"></i>&nbsp;Edit
+                                </a>
+                                <a class="btn btn-primary text-white" asp-page="view"
+                                   style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
+                                    <i class="fa fa-eye"></i>&nbsp;View
+                                </a>
+                                <a class="btn btn-danger text-white" asp-page="delete"
+                                   style="cursor:pointer;width:100px;" asp-route-id="@Model.Users[i].Id">
+                                    <i class="fa fa-trash-alt"></i>&nbsp;Delete
+                                </a>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
-            
+
         </div>
         <div class="container">
             <div class="row justify-content-center align-content-center">

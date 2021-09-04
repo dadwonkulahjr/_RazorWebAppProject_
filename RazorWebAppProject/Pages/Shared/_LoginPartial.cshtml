@@ -1,18 +1,41 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@{ 
+    string photoPath = null;
+    if (SignInManager.IsSignedIn(User))
+    {
+        var result = await UserManager.GetUserAsync(User);
+        photoPath = "~/images/iamtuse_application_users_upload/" + (result.PhotoPath ?? "no-image.png");
+    }
+}
 <nav class="navbar navbar-expand navbar-expand-xl navbar-expand-md">
     <ul class="navbar-nav">
         @if (SignInManager.IsSignedIn(User))
         {
-            <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <img src="@photoPath" asp-append-version="true" style="width:50px;" class="rounded-circle" alt="Image Loading...." />
+                </a>
+                <div class="dropdown-menu border-0 text-center bg-primary">
+                    <a class="btn btn-primary" asp-page="/Account/Logout">
+                        <i class="fas fa-sign-out-alt"></i>&nbsp;Logout
+                    </a>
+                    
+                </div>
+            </li>
+            @*<li class="nav-item">
+                <a asp-page="index">
+                    <img src="~/images/test2.png" style="width:60px;" class="rounded-circle" alt="Image Loading...." />
+                </a>
             </li>
             <li class="nav-item">
                 <a class="btn btn-primary" asp-page="/Account/Logout">
                     Logout&nbsp;<i class="fas fa-sign-out-alt"></i>
                 </a>
-            </li>
+            </li>*@
         }
         else
         {

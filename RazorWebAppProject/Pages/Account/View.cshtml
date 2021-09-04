@@ -1,0 +1,37 @@
+﻿@page "{id}"
+@model RazorWebAppProject.Pages.Account.ViewModel
+@{
+    ViewData["Title"] = "User Details";
+    var photoPath = "~/images/iamtuse_application_users_upload/" + (Model.ApplicationUser.PhotoPath ?? "no-image.png");
+}
+
+
+<div class="border backgroundWhite container mt-4">
+    <div class="row">
+        <div class="col-6 col-12">
+            <h2 class="text-primary">
+                <i class="fa fa-info-circle"></i>&nbsp;Details
+            </h2>
+        </div>
+    </div>
+    <hr />
+    <div class="container">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-4 text-center">
+                <img src="@photoPath" asp-append-version="true" class="rounded-circle" style="width:180px;" />
+                <h4 class="text-primary mb-3">Profile Picture</h4>
+                <h5>Username: @Model.ApplicationUser.UserName</h5>
+                <h5>Fullname: @Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName</h5>
+                <h5>Email: @Model.ApplicationUser.Email</h5>
+                <h5>Gender: @Model.ApplicationUser.Gender</h5>
+                <h5>Address: @Model.ApplicationUser.Address</h5>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <a asp-page="manageuser" class="btn btn-primary">
+                <i class="fa fa-arrow-alt-circle-left"></i>&nbsp;Back to List
+            </a>
+        </div>
+
+    </div>
+</div>
